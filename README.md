@@ -37,6 +37,7 @@ only applies to grammatical examples; non-examples always use the CYK algorithm
   * `"neg_per_len"`: (for `"neg_mode": "auto"`; default: `5`) max. no. of sequences of each length to select
               as non-examples
 * `"restrict_term"`: (required; bool) whether to forbid a variable from yielding more than 1 terminal
+* `"relax_chomsky"`: (required; bool) whether to relax Chomsky normal form to allow start variable on RS of rules
 
 Here's an example:
 ```json
@@ -46,7 +47,8 @@ Here's an example:
     "data": "sample_inputs/in_NV.txt",
     "algo": "parse_tree",
     "neg_mode": null,
-    "restrict_term": false
+    "restrict_term": true,
+    "relax_chomsky": true
 }
 ```
 

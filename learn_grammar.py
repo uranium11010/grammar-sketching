@@ -95,10 +95,12 @@ generator Grammar chomsky_grammar(int vocab_size) {
         minimize(var_rule.k);
         for (int j = 0; j < var_rule.k; j++) {
             int B = var_rule.outputs[j][0];
-            assert B < n && B != 0;
             int C = var_rule.outputs[j][1];
-            assert C < n && C != 0;
-        }
+            assert B < n && C < n;
+"""
+    if not args.relax_chomsky:
+        sketch += "            assert B != 0 && C != 0;\n"
+    sketch += """        }
         TermRule term_rule = grammar.term_rules[i];
         minimize(term_rule.k);
 """
@@ -227,7 +229,7 @@ void compute_sizes(ParseChoices parse_choices) {
             if (sizes[i] == 0) {
                 assert parse_choices.choices[i] == 0;
             } else {
-                assert size_l > 0 && size_r > 0;
+                assert size_l != 0 && size_r != 0;
             }
         }
     }           
@@ -288,6 +290,7 @@ if __name__ == "__main__":
         "neg_per_len": (for "neg_mode": "auto"; default=5) max. no. of sequences of each length to select
             as non-examples
     "restrict_term": (required; bool) whether to forbid a variable from yielding more than 1 terminal
+    "relax_chomsky": (required; bool) whether to relax Chomsky normal form to allow start variable on RS of rules
     """
 
     cl_args = parser.parse_args()

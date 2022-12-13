@@ -1,0 +1,10 @@
+V N
+V N N
+N ADJ N V
+N
+ADJ
+N V ADJ
+N DET
+N ADJ
+DET
+ADJ DET

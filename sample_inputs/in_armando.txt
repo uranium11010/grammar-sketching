@@ -1,0 +1,28 @@
+So if program synthesis is not compilation, it is not logic programming, and
+it is not machine learning, then what is program synthesis? As mentioned
+before, different people in the community have different working definitions
+of what they would describe as program synthesis, but I believe the definition
+below is one that both captures most of what today we understand as program
+synthesis and also excludes some of the aforementioned classes of approaches.
+Program Synthesis correspond to a class of techniques that are able to
+generate a program from a collection of artifacts that establish semantic and
+syntactic requirements for the generated code.
+There are two elements of this definition that are important. The first is an
+emphasis on the generation of a program; we expect the synthesizer to produce
+code that solves our problem, as opposed to relying on extensive search at
+runtime to find a solution for a particular input, as logic programming
+systems do. The second is the emphasis on supporting specification of both
+semantic and syntactic requirements. We expect synthesis algorithms to provide
+us with some control over the space of programs that are going to be
+considered, not just their intended behavior. It is important to emphasize
+that individual synthesis systems may not themselves provide this flexibility;
+in fact, the biggest successes of synthesis so far have been in specialized
+domains where constraints on the space of programs have been "baked in" to the
+synthesis system. Nevertheless, even if the flexibility is not exposed to the
+users, the underlying synthesis algorithms do have significant flexibility in
+how the space of programs is defined, and this is a big differentiator both
+with respect to compilation and with respect to machine learning. In general,
+both of these requirements imply that our synthesis procedures will rely on
+some form of search, although the success of synthesis will be largely driven
+by our ability to avoid having to exhaustively search the exponentially large
+space of programs that arise for even relatively simple synthesis problems.
